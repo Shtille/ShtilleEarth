@@ -1,0 +1,9 @@
+[submodule "deps/saim"]
+	path = deps/saim
+	url = https://github.com/Shtille/libsaim.git
+[submodule "deps/scythe-thirdparty"]
+	path = deps/scythe-thirdparty
+	url = https://github.com/Shtille/scythe-thirdparty.git
+[submodule "deps/scythe"]
+	path = deps/scythe
+	url = https://github.com/Shtille/scythe.git
