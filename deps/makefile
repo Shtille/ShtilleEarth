@@ -3,27 +3,27 @@
 TARGET = deps
 
 # Main routine
-SUBDIRS_CUSTOM = scythe-thirdparty
-SUBDIRS_NORMAL = scythe saim
+SUBDIRS_NORMAL = thirdparty scythe
+SUBDIRS_CUSTOM = saim
 
 all: $(TARGET)
 
 .PHONY: clean
 clean:
-	@$(foreach directory, $(SUBDIRS_CUSTOM), $(MAKE) -C $(directory) clean ;)
 	@$(foreach directory, $(SUBDIRS_NORMAL), $(MAKE) -C $(directory) clean ;)
+	@$(foreach directory, $(SUBDIRS_CUSTOM), $(MAKE) -C $(directory) clean ;)
 
 .PHONY: help
 help:
 	@echo available targets: all clean
 
-$(TARGET): $(SUBDIRS_CUSTOM) $(SUBDIRS_NORMAL)
+$(TARGET): $(SUBDIRS_NORMAL) $(SUBDIRS_CUSTOM)
 
 .PHONY: $(SUBDIRS_NORMAL)
 $(SUBDIRS_NORMAL):
 	@$(MAKE) -C $@ $@
 
 # Declare rules for custom subdirs
-.PHONY: scythe-thirdparty
-scythe-thirdparty:
-	@$(MAKE) -C scythe-thirdparty thirdparty
+.PHONY: saim
+saim:
+	@$(MAKE) -C $@ $@ USE_THIRDPARTY=NO

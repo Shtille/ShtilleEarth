@@ -1,0 +1,25 @@
+Simple roadmap of things to do in Shtille Earth project.
+
+Total improvements:
+[+] 1. Add bounding box check.
+[+] 2. Fix sphere invisibility.
+[+] 3. Fix geometry LOD computing.
+[+] 4. Fix texture LOD computing.
+[+] 5. Do some refactoring.
+[-] 6. Add Earth position parameter to renderer class.
+[-] 7. Fix camera navigation.
+[+] 8. Add tree preprocess.
+[-] 9. Remove allocations on MapTile class.
+[-] 10. Remove allocations on Renderable class.
+[-] 11. Get rid of Map class.
+
+General line of tasks:
+[+] 1. Finish satellite imagery part implementation.
+[+] 2. Add fetching texture data for quad tree nodes.
+[+] 3. More accurate maximum and minimum latitude/longitude calculation.
+[+] 4. Optimize performance, a.e. use separate thread for filling the buffer.
+[+] 5. Move 'saim' part away from engine library.
+[-] 6. Fix service thread that is currently works synchronously.
+
+Optional:
+[-] 1. Add fetching height data for quad tree nodes.

@@ -2,7 +2,7 @@
 	path = deps/saim
 	url = https://github.com/Shtille/libsaim.git
 [submodule "deps/scythe-thirdparty"]
-	path = deps/scythe-thirdparty
+	path = deps/thirdparty
 	url = https://github.com/Shtille/scythe-thirdparty.git
 [submodule "deps/scythe"]
 	path = deps/scythe
