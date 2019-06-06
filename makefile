@@ -45,6 +45,7 @@ DIRS_ORDER = \
 	$(BINARY_DIRS) install_bins
 
 LIB_PATH = lib
+BIN_PATH = bin
 
 all: $(DIRS_ORDER)
 
@@ -76,7 +77,10 @@ install_libs: create_libs_dir
 	@find $(LIB_PATH) -name "*$(STATIC_LIB_EXT)" -type f -delete
 	@$(foreach directory, $(LIBRARY_DIRS), find $(directory) -name "*$(STATIC_LIB_EXT)" -type f -exec cp {} $(LIB_PATH) \; ;)
 
-install_bins:
+create_bins_dir:
+	@test -d $(BIN_PATH) || mkdir $(BIN_PATH)
+
+install_bins: create_bins_dir
 	@$(foreach directory, $(BINARY_DIRS), $(MAKE) -C $(directory) install ;)
 
 .PHONY: $(DIRS_ORDER)

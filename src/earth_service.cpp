@@ -1,6 +1,6 @@
 #include "earth_service.h"
 
-#include "../../sht/thirdparty/libsaim/include/saim.h"
+#include "saim.h"
 
 EarthService::EarthService()
 {
@@ -13,7 +13,7 @@ bool EarthService::Initialize()
 	if (saim_init("", nullptr, 0) != 0)
 		return false;
 	// Create image object
-	image_.Allocate(256, 256, sht::graphics::Image::Format::kRGB8);
+	image_.Allocate(256, 256, scythe::Image::Format::kRGB8);
 	// Some library settings
 	saim_set_bitmap_cache_size(100);
 	saim_set_target(image_.pixels(), image_.width(), image_.height(), image_.bpp());

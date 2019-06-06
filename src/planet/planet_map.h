@@ -1,45 +1,36 @@
-#pragma once
-#ifndef __SHT_GEO_PLANET_MAP_H__
-#define __SHT_GEO_PLANET_MAP_H__
+#ifndef __PLANET_MAP_H__
+#define __PLANET_MAP_H__
 
-namespace sht {
-	namespace graphics {
-		class Renderer;
-		class Texture;
-	} // namespace graphics
-} // namespace sht
+namespace scythe {
+	class Renderer;
+	class Texture;
+} // namespace scythe
 
-namespace sht {
-	namespace geo {
+class PlanetTreeNode;
+class PlanetMapTile;
+class PlanetService;
 
-		class PlanetTreeNode;
-		class PlanetMapTile;
-		class PlanetService;
+class PlanetMap {
+public:
+	PlanetMap(PlanetService * albedo_service, scythe::Renderer * renderer);
+	~PlanetMap();
 
-		class PlanetMap {
-		public:
-			PlanetMap(PlanetService * albedo_service, graphics::Renderer * renderer);
-			~PlanetMap();
+	bool Initialize();
 
-			bool Initialize();
+	void ResetTile();
+	bool PrepareTile(PlanetTreeNode * node);
+	PlanetMapTile * FinalizeTile(PlanetTreeNode * node);
 
-			void ResetTile();
-			bool PrepareTile(PlanetTreeNode * node);
-			PlanetMapTile * FinalizeTile(PlanetTreeNode * node);
+	scythe::Renderer * renderer();
 
-			graphics::Renderer * renderer();
+private:
 
-		private:
+	void Deinitialize();
 
-			void Deinitialize();
-
-			PlanetService * albedo_service_;		//!< service for filling albedo texture data
-			graphics::Renderer * renderer_;			//!< pointer to renderer object
-			graphics::Texture * albedo_texture_;
-			int step_;
-		};
-
-	} // namespace geo
-} // namespace sht
+	PlanetService * albedo_service_;		//!< service for filling albedo texture data
+	scythe::Renderer * renderer_;			//!< pointer to renderer object
+	scythe::Texture * albedo_texture_;
+	int step_;
+};
 
 #endif

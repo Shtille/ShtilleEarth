@@ -1,10 +1,9 @@
-#pragma once
 #ifndef __EARTH_SERVICE_H__
 #define __EARTH_SERVICE_H__
 
-#include "../../sht/geo/include/planet_service.h"
+#include "planet/planet_service.h"
 
-class EarthService final : public sht::geo::PlanetService {
+class EarthService final : public PlanetService {
 public:
 	EarthService();
 	~EarthService();

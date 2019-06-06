@@ -333,5 +333,14 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+# temporary files
+*.o
+*.d
+
 *.a
 .DS_Store
+*.app
+
+# Raster maps files
+data.om
+regions.omrh

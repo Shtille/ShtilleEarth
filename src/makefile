@@ -33,7 +33,7 @@ INCLUDE = \
 	-I$(ROOT_PATH)/deps/saim/include
 DEFINES = 
 
-SRC_DIRS = .
+SRC_DIRS = planet .
 SRC_FILES = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.cpp))
 
 # intermediate directory for generated object files
@@ -89,12 +89,12 @@ endif
 
 ifeq ($(OS),Windows_NT)
 	CLEAN = rmdir /Q /S $(OBJDIR) && rmdir /Q /S $(DEPDIR)
-	INSTALL = COPY /Y $(TARGET_FILE) ../$(TARGET_PATH)
-	UNINSTALL = DEL /Q "..\$(TARGET_PATH)\$(TARGET_FILE)"
+	INSTALL = COPY /Y $(TARGET_FILE) $(TARGET_PATH)
+	UNINSTALL = DEL /Q "$(TARGET_PATH)\$(TARGET_FILE)"
 else
 	CLEAN = rm -r $(OBJDIR) $(DEPDIR)
-	INSTALL = cp $(TARGET_FILE) ../$(TARGET_PATH)
-	UNINSTALL = find ../$(TARGET_PATH) -name "$(TARGET_FILE)" -type f -delete
+	INSTALL = cp $(TARGET_FILE) $(TARGET_PATH)
+	UNINSTALL = find $(TARGET_PATH) -name "$(TARGET_FILE)" -type f -delete
 endif
 
 all: $(TARGET)

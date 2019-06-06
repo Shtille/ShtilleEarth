@@ -1,34 +1,25 @@
-#pragma once
-#ifndef __SHT_GEO_PLANET_MAP_TILE_H__
-#define __SHT_GEO_PLANET_MAP_TILE_H__
+#ifndef __PLANET_MAP_TILE_H__
+#define __PLANET_MAP_TILE_H__
 
-namespace sht {
-	namespace graphics {
-		class Texture;
-	} // namespace graphics
-} // namespace sht
+namespace scythe {
+	class Texture;
+} // namespace scythe
 
-namespace sht {
-	namespace geo {
+class PlanetMap;
+class PlanetTreeNode;
 
-		class PlanetMap;
-		class PlanetTreeNode;
+class PlanetMapTile {
+public:
+	PlanetMapTile(PlanetMap * map, PlanetTreeNode * node, scythe::Texture * albedo_texture);
+	~PlanetMapTile();
 
-		class PlanetMapTile {
-		public:
-			PlanetMapTile(PlanetMap * map, PlanetTreeNode * node, graphics::Texture * albedo_texture);
-			~PlanetMapTile();
+	PlanetTreeNode * GetNode();
+	void BindTexture();
 
-			PlanetTreeNode * GetNode();
-			void BindTexture();
-
-		private:
-			PlanetMap * map_; // owner
-			PlanetTreeNode * node_;
-			graphics::Texture * albedo_texture_;
-		};
-
-	} // namespace geo
-} // namespace sht
+private:
+	PlanetMap * map_; // owner
+	PlanetTreeNode * node_;
+	scythe::Texture * albedo_texture_;
+};
 
 #endif

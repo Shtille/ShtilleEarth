@@ -1,25 +1,18 @@
-#pragma once
-#ifndef __SHT_GEO_PLANET_TILE_MESH_H__
-#define __SHT_GEO_PLANET_TILE_MESH_H__
+#ifndef __PLANET_TILE_MESH_H__
+#define __PLANET_TILE_MESH_H__
 
-#include "../../graphics/include/model/model.h"
+#include "model/generated_model.h"
 
-namespace sht {
-	namespace geo {
+//! Planet tile mesh class
+class PlanetTileMesh final : public scythe::GeneratedModel {
+public:
+	explicit PlanetTileMesh(scythe::Renderer * renderer, int grid_size);
+	virtual ~PlanetTileMesh();
 
-		//! Planet tile mesh class
-		class PlanetTileMesh final : public graphics::Model {
-		public:
-			explicit PlanetTileMesh(graphics::Renderer * renderer, int grid_size);
-			virtual ~PlanetTileMesh();
+	void Create();
 
-			void Create();
-
-		private:
-			const int grid_size_;
-		};
-
-	} // namespace geo
-} // namespace sht
+private:
+	const int grid_size_;
+};
 
 #endif
