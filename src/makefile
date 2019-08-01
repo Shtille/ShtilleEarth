@@ -1,8 +1,6 @@
 # Makefile for Shtille Earth binary
 
 ROOT_PATH = ..
-LIBRARY_PATH = $(ROOT_PATH)/lib
-TARGET_PATH = $(ROOT_PATH)/bin
 
 # Platform-specific defines
 ifeq ($(OS),Windows_NT)
@@ -25,7 +23,7 @@ endif
 # 'TARGET' should coinside with directory name
 TARGET = src
 TARGET_NAME = ShtilleEarth
-TARGET_FILE = $(TARGET_NAME)$(TARGET_EXT)
+TARGET_FILE = $(BINARY_PATH)/$(TARGET_NAME)$(TARGET_EXT)
 
 INCLUDE = \
 	-I$(ROOT_PATH)/deps/scythe/include \
@@ -47,8 +45,17 @@ OBJECTS := $(patsubst %,$(OBJDIR)/%.o,$(basename $(SRC_FILES)))
 DEPS := $(patsubst %,$(DEPDIR)/%.d,$(basename $(SRC_FILES)))
 
 # compilers (at least gcc and clang) don't create the subdirectories automatically
+ifeq ($(OS),Windows_NT)
+$(foreach dir,$(subst /,\\,$(dir $(OBJECTS))),$(shell if not exist $(dir) mkdir $(dir)))
+$(foreach dir,$(subst /,\\,$(dir $(DEPS))),$(shell if not exist $(dir) mkdir $(dir)))
+else
 $(shell mkdir -p $(dir $(OBJECTS)) >/dev/null)
 $(shell mkdir -p $(dir $(DEPS)) >/dev/null)
+endif
+
+# User library dependencies
+DEPENDENT_LIBRARIES = scythe saim
+DEPENDENT_LIB_FILES = $(foreach name,$(DEPENDENT_LIBRARIES),$(patsubst %,$(LIBRARY_PATH)/lib%$(STATIC_LIB_EXT),$(name)))
 
 # C++ flags
 CXXFLAGS := -std=c++11
@@ -82,19 +89,15 @@ LINK.o = $(CXX) $(LDFLAGS) $(LDLIBS) -o $@
 PRECOMPILE =
 # postcompile step
 ifeq ($(OS),Windows_NT)
-	POSTCOMPILE = MOVE /Y $(DEPDIR)\$*.Td $(DEPDIR)\$*.d
+	POSTCOMPILE = MOVE /Y $(DEPDIR)\\$(subst /,\\,$*.Td) $(DEPDIR)\\$(subst /,\\,$*.d)
 else
 	POSTCOMPILE = mv -f $(DEPDIR)/$*.Td $(DEPDIR)/$*.d
 endif
 
 ifeq ($(OS),Windows_NT)
 	CLEAN = rmdir /Q /S $(OBJDIR) && rmdir /Q /S $(DEPDIR)
-	INSTALL = COPY /Y $(TARGET_FILE) $(TARGET_PATH)
-	UNINSTALL = DEL /Q "$(TARGET_PATH)\$(TARGET_FILE)"
 else
 	CLEAN = rm -r $(OBJDIR) $(DEPDIR)
-	INSTALL = cp $(TARGET_FILE) $(TARGET_PATH)
-	UNINSTALL = find $(TARGET_PATH) -name "$(TARGET_FILE)" -type f -delete
 endif
 
 all: $(TARGET)
@@ -103,22 +106,14 @@ all: $(TARGET)
 clean:
 	@$(CLEAN)
 
-.PHONY: install
-install:
-	@$(INSTALL)
-
-.PHONY: uninstall
-uninstall:
-	@$(UNINSTALL)
-
 .PHONY: help
 help:
-	@echo available targets: all clean install uninstall
+	@echo available targets: all clean
 
 $(TARGET): $(TARGET_FILE)
 
-$(TARGET_FILE): $(OBJECTS)
-	@echo linking $@
+$(TARGET_FILE): $(OBJECTS) $(DEPENDENT_LIB_FILES)
+	@echo linking $(TARGET_NAME)$(TARGET_EXT)
 	@$(LINK.o) $(OBJECTS)
 
 $(OBJDIR)/%.o: %.cpp

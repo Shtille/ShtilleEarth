@@ -7,12 +7,16 @@ ifeq ($(OS),Windows_NT)
 	#CCFLAGS += -D WIN32
 	MAKE := mingw32-make.exe
 	LDFLAGS = -s -shared
+	LIBRARY_PATH := $(shell cd)\\lib
+	BINARY_PATH := $(shell cd)\\bin
 	CC := gcc
 	CXX := g++
 	SHARED_LIB_EXT = .so
 else
 	MAKE := make
 	LDFLAGS = -shared -fPIC
+	LIBRARY_PATH := $(shell pwd)/lib
+	BINARY_PATH := $(shell pwd)/bin
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
 		#CCFLAGS += -D LINUX
@@ -37,15 +41,22 @@ export CC
 export CXX
 export AR
 export LDFLAGS
+export LIBRARY_PATH
+export BINARY_PATH
 
 LIBRARY_DIRS = deps
 BINARY_DIRS = src
 DIRS_ORDER = \
-	$(LIBRARY_DIRS) install_libs \
-	$(BINARY_DIRS) install_bins
+	create_libs_dir $(LIBRARY_DIRS) \
+	create_bins_dir $(BINARY_DIRS)
 
-LIB_PATH = lib
-BIN_PATH = bin
+ifeq ($(OS),Windows_NT)
+	CREATE_LIBS_DIR = if not exist $(LIBRARY_PATH) mkdir $(LIBRARY_PATH)
+	CREATE_BINS_DIR = if not exist $(BINARY_PATH) mkdir $(BINARY_PATH)
+else
+	CREATE_LIBS_DIR = test -d $(LIBRARY_PATH) || mkdir -p $(LIBRARY_PATH)
+	CREATE_BINS_DIR = test -d $(BINARY_PATH) || mkdir -p $(BINARY_PATH)
+endif
 
 all: $(DIRS_ORDER)
 
@@ -53,16 +64,9 @@ all: $(DIRS_ORDER)
 clean:
 	@$(foreach directory, $(LIBRARY_DIRS) $(BINARY_DIRS), $(MAKE) -C $(directory) clean ;)
 
-.PHONY: install
-install: install_bins
-
-.PHONY: uninstall
-uninstall:
-	@$(foreach directory, $(BINARY_DIRS), $(MAKE) -C $(directory) uninstall ;)
-
 .PHONY: help
 help:
-	@echo available targets: all clean install uninstall
+	@echo available targets: all clean
 
 $(LIBRARY_DIRS):
 	@$(MAKE) -C $@ $@
@@ -71,16 +75,9 @@ $(BINARY_DIRS):
 	@$(MAKE) -C $@ $@
 
 create_libs_dir:
-	@test -d $(LIB_PATH) || mkdir $(LIB_PATH)
-
-install_libs: create_libs_dir
-	@find $(LIB_PATH) -name "*$(STATIC_LIB_EXT)" -type f -delete
-	@$(foreach directory, $(LIBRARY_DIRS), find $(directory) -name "*$(STATIC_LIB_EXT)" -type f -exec cp {} $(LIB_PATH) \; ;)
+	@$(CREATE_LIBS_DIR)
 
 create_bins_dir:
-	@test -d $(BIN_PATH) || mkdir $(BIN_PATH)
-
-install_bins: create_bins_dir
-	@$(foreach directory, $(BINARY_DIRS), $(MAKE) -C $(directory) install ;)
+	@$(CREATE_BINS_DIR)
 
 .PHONY: $(DIRS_ORDER)
