@@ -7,7 +7,7 @@ Total improvements:
 [+] 4. Fix texture LOD computing.
 [+] 5. Do some refactoring.
 [-] 6. Add Earth position parameter to renderer class.
-[-] 7. Fix camera navigation.
+[+] 7. Fix camera navigation.
 [+] 8. Add tree preprocess.
 [-] 9. Remove allocations on MapTile class.
 [-] 10. Remove allocations on Renderable class.

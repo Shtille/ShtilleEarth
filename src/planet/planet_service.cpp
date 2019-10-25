@@ -14,12 +14,7 @@ PlanetService::PlanetService()
 }
 PlanetService::~PlanetService()
 {
-	volatile bool finishing;
-	mutex_.lock();
-	finishing = finishing_;
-	mutex_.unlock();
-	if (!finishing)
-		StopService();
+	StopService();
 }
 void PlanetService::RunService()
 {
@@ -28,16 +23,19 @@ void PlanetService::RunService()
 }
 void PlanetService::StopService()
 {
-	{//---
-		std::unique_lock<std::mutex> guard(mutex_);
-		finishing_ = true;
-		condition_variable_.notify_one();
-	}//---
-	thread_.join();
+	if (thread_.joinable())
+	{
+		{//---
+			std::lock_guard<std::mutex> guard(mutex_);
+			finishing_ = true;
+			condition_variable_.notify_one();
+		}//---
+		thread_.join();
+	}
 }
 bool PlanetService::CheckRegionStatus(int face, int lod, int x, int y)
 {
-	std::unique_lock<std::mutex> guard(mutex_);
+	std::lock_guard<std::mutex> guard(mutex_);
 	if (done_)
 	{
 		// Notify owner that task is done and fall into sleep
@@ -75,13 +73,18 @@ void PlanetService::ObtainTileParameters(int* face, int* lod, int* x, int* y)
 }
 void PlanetService::ThreadFunc()
 {
-	volatile bool finishing = false;
-	volatile bool has_task = false;
-	volatile bool done = false;
+	bool finishing = false;
+	bool has_task = false;
+	bool done = false;
 	for (;;)
 	{
 		{//---
 			std::lock_guard<std::mutex> guard(mutex_);
+			if (has_task && done)
+			{
+				done_ = true;
+				has_task_ = false;
+			}
 			finishing = finishing_;
 			has_task = has_task_;
 		}//---
@@ -98,12 +101,5 @@ void PlanetService::ThreadFunc()
 		}
 
 		done = Execute();
-
-		if (done)
-		{
-			std::lock_guard<std::mutex> guard(mutex_);
-			done_ = done;
-			has_task_ = !done;
-		}
 	}
 }
