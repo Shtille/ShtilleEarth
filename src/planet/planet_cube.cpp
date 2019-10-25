@@ -5,6 +5,9 @@
 #include "planet_renderable.h"
 
 #include "math/matrix3.h"
+#include "math/matrix4.h"
+#include "math/frustum.h"
+#include "graphics/renderer.h"
 
 #include <cmath>
 
@@ -15,11 +18,13 @@ namespace {
 }
 
 PlanetCube::PlanetCube(PlanetService * albedo_service, scythe::Renderer * renderer, scythe::Shader * shader,
-	scythe::CameraManager * camera, scythe::Frustum * frustum, float radius)
-	: shader_(shader)
+	scythe::CameraManager * camera, scythe::Frustum * frustum, const scythe::Vector3& planet_position, float radius)
+	: renderer_(renderer)
+	, shader_(shader)
 	, camera_(camera)
 	, frustum_(frustum)
 	, grid_size_(17)
+	, planet_position_(planet_position)
 	, radius_(radius)
 	, frame_counter_(0)
 	, lod_freeze_(false)
@@ -63,7 +68,7 @@ void PlanetCube::Update()
 	// Update LOD state.
 	if (!lod_freeze_)
 	{
-		lod_params_.camera_position = *camera_->position() /*- planet_position;*/;
+		lod_params_.camera_position = *camera_->position() - planet_position_;
 		lod_params_.camera_front = camera_->GetForward();
 		lod_params_.camera_distance = lod_params_.camera_position.Length();
 	}
@@ -87,10 +92,25 @@ void PlanetCube::Update()
 }
 void PlanetCube::Render()
 {
+	renderer_->PushMatrix();
+	renderer_->Translate(planet_position_);
+
+	// Model matrix should be taken after all transforms took place
+	scythe::Matrix4 projection_view_matrix;
+	frustum_->GetMatrix(&projection_view_matrix);
+	scythe::Matrix4 mvp = projection_view_matrix * renderer_->model_matrix();
+
+	shader_->Bind();
+	shader_->UniformMatrix4fv("u_projection_view_model", mvp);
+
 	for (int i = 0; i < kNumFaces; ++i)
 		faces_[i]->Render();
 
 	++frame_counter_;
+
+	shader_->Unbind();
+
+	renderer_->PopMatrix();
 }
 void PlanetCube::SplitQuadTreeNode(PlanetTreeNode* node)
 {

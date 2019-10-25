@@ -133,6 +133,7 @@ PlanetMapTile * PlanetRenderable::GetMapTile()
 void PlanetRenderable::AnalyzeTerrain()
 {
 	const int grid_size = node_->owner_->cube_->grid_size();
+	const scythe::Vector3& planet_position = node_->owner_->cube_->planet_position_;
 	const float planet_radius = node_->owner_->cube_->radius();
 	scythe::Matrix3 face_transform = PlanetCube::GetFaceTransform(node_->owner_->face_);
 
@@ -178,7 +179,9 @@ void PlanetRenderable::AnalyzeTerrain()
 	surface_normal_ = center_;
 	surface_normal_.Normalize();
 
-	// Set bounding box
+	// Set bounding box (it should be in global coordinates)
+	min += planet_position;
+	max += planet_position;
 	bounding_box_.Set(min, max);
 
 	// Calculate sector angles

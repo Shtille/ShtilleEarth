@@ -63,7 +63,7 @@ class PlanetCube final : public scythe::NonCopyable {
 
 public:
 	PlanetCube(PlanetService * albedo_service, scythe::Renderer * renderer, scythe::Shader * shader,
-		scythe::CameraManager * camera, scythe::Frustum * frustum, float radius);
+		scythe::CameraManager * camera, scythe::Frustum * frustum, const scythe::Vector3& planet_position, float radius);
 	~PlanetCube();
 
 	//! Data video memory objects creation and other things that may fail
@@ -102,6 +102,7 @@ protected:
 	void RefreshMapTile(PlanetTreeNode* node, PlanetMapTile* tile);
 
 private:
+	scythe::Renderer * renderer_;
 	scythe::Shader * shader_;			//!< pointer to shader object
 	scythe::CameraManager * camera_;	//!< pointer to camera object
 	scythe::Frustum * frustum_;			//!< pointer to frustum object
@@ -110,6 +111,7 @@ private:
 	PlanetTree * faces_[kNumFaces];
 
 	const int grid_size_;
+	scythe::Vector3 planet_position_; //!< planet position
 	const float radius_; //!< planet radius
 	PlanetTileMesh * tile_;
 	PlanetMap * map_;

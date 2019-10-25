@@ -80,7 +80,7 @@ public:
 		const float kAnimationTime = 1.0f;
 		planet_navigation_ = new scythe::PlanetNavigation(camera_manager_, kEarthPosition, kEarthRadius, kAnimationTime, kCameraDistance, 100.0f);
 
-		planet_ = new PlanetCube(earth_service_, renderer_, planet_shader_, camera_manager_, &frustum_, kEarthRadius);
+		planet_ = new PlanetCube(earth_service_, renderer_, planet_shader_, camera_manager_, &frustum_, kEarthPosition, kEarthRadius);
 		if (!planet_->Initialize())
 			return false;
 
@@ -124,22 +124,9 @@ public:
 	}
 	void RenderPlanetCube()
 	{
-		renderer_->PushMatrix();
-		renderer_->Translate(kEarthPosition);
-
-		// Model matrix should be taken after all transforms took place
-		scythe::Matrix4 mvp = projection_view_matrix_ * renderer_->model_matrix();
-
-		planet_shader_->Bind();
-		planet_shader_->UniformMatrix4fv("u_projection_view_model", mvp);
-
 		//renderer_->EnableWireframeMode();
 		planet_->Render();
 		//renderer_->DisableWireframeMode();
-
-		planet_shader_->Unbind();
-
-		renderer_->PopMatrix();
 	}
 	void RenderInterface()
 	{
