@@ -169,8 +169,8 @@ void PlanetRenderable::AnalyzeTerrain()
 
 			center_ += sphere_point;
 
-			min.MakeFloor(sphere_point);
-			max.MakeCeil(sphere_point);
+			min.MakeMinimum(sphere_point);
+			max.MakeMaximum(sphere_point);
 		}
 	}
 

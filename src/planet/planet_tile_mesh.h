@@ -1,10 +1,10 @@
 #ifndef __PLANET_TILE_MESH_H__
 #define __PLANET_TILE_MESH_H__
 
-#include "model/generated_model.h"
+#include "model/mesh_part.h"
 
 //! Planet tile mesh class
-class PlanetTileMesh final : public scythe::GeneratedModel {
+class PlanetTileMesh final : public scythe::MeshPart {
 public:
 	explicit PlanetTileMesh(scythe::Renderer * renderer, int grid_size);
 	virtual ~PlanetTileMesh();

@@ -45,9 +45,15 @@ PlanetCube::~PlanetCube()
 }
 bool PlanetCube::Initialize()
 {
-	tile_->AddFormat(scythe::VertexAttribute(scythe::VertexAttribute::kVertex, 3));
+	scythe::VertexFormat * object_vertex_format;
+	{
+		scythe::VertexAttribute attributes[] = {
+			scythe::VertexAttribute(scythe::VertexAttribute::kVertex, 3),
+		};
+		renderer_->AddVertexFormat(object_vertex_format, attributes, _countof(attributes));
+	}
     tile_->Create();
-    if (!tile_->MakeRenderable())
+    if (!tile_->MakeRenderable(object_vertex_format, nullptr, false))
         return false;
 	if (!map_->Initialize())
 		return false;

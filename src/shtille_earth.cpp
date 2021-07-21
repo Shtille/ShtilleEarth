@@ -6,7 +6,6 @@
 #include "planet/planet_navigation.h"
 
 #include "declare_main.h"
-#include "model/sphere_model.h"
 #include "graphics/text.h"
 #include "camera.h"
 #include "math/frustum.h"
@@ -61,9 +60,8 @@ public:
 	bool Load() final
 	{        
 		// Load shaders
-		const char *attribs[] = {"a_position", "a_normal", "a_texcoord"};
-		if (!renderer_->AddShader(planet_shader_, "data/shaders/planet/planet_tile", attribs, 1)) return false;
-		if (!renderer_->AddShader(text_shader_, "data/shaders/text", attribs, 1)) return false;
+		if (!renderer_->AddShader(planet_shader_, "data/shaders/planet/planet_tile")) return false;
+		if (!renderer_->AddShader(text_shader_, "data/shaders/text")) return false;
 
 		renderer_->AddFont(font_, "data/fonts/GoodDog.otf");
 		if (font_ == nullptr)

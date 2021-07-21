@@ -1,7 +1,7 @@
 #include "planet_tile_mesh.h"
 
 PlanetTileMesh::PlanetTileMesh(scythe::Renderer * renderer, int grid_size)
-	: scythe::GeneratedModel(renderer)
+	: scythe::MeshPart(renderer)
 	, grid_size_(grid_size)
 {
 	primitive_mode_ = scythe::PrimitiveType::kTriangles;
