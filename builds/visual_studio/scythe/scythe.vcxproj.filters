@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{5b186b1e-97d1-4095-a2a7-69e9179d9c4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{baba6695-0abf-4254-a504-e2c0364f9952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\application">
+      <UniqueIdentifier>{28b3c27f-1ee7-46e0-926d-d12d77a23f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{0c3ecf39-f08e-475b-97a1-c277fe5c8c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\containers">
+      <UniqueIdentifier>{4AC40D65-58FF-4D02-9F59-CB972717EEB7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\event">
+      <UniqueIdentifier>{318cca4a-7173-42b7-9d9f-32726f9a3500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\filesystem">
+      <UniqueIdentifier>{0eee4542-ddb9-4c6f-99dd-9812e352581b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\graphics">
+      <UniqueIdentifier>{fc631af0-575c-422e-99ed-c1bef7ded66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\image">
+      <UniqueIdentifier>{45ffc134-2e8a-44e4-bd36-88b6f8af8e71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\input">
+      <UniqueIdentifier>{a75f2488-f3d3-40c1-b4b9-3bc8af5e4b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math">
+      <UniqueIdentifier>{ed4a1260-eb69-4232-acbb-f5bb8ec029c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\model">
+      <UniqueIdentifier>{aabc8ebf-543e-4c36-a2cd-42cb1e64ee8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\planet">
+      <UniqueIdentifier>{1c2f1805-d331-48ba-908d-7bf69dc51655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform">
+      <UniqueIdentifier>{0de5ac50-1940-40ea-85da-f3e0590aa1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\stream">
+      <UniqueIdentifier>{4a5c0ea9-c8cb-4f4b-9ad5-fda13f71876b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tasks">
+      <UniqueIdentifier>{419bba45-cbea-489f-bc03-a133671470ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\time">
+      <UniqueIdentifier>{01995b83-8165-4b27-8d7c-3180e8181154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{fc0a8511-254d-4de6-a049-a9a55ddc11bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\graphics\opengl">
+      <UniqueIdentifier>{65379d6d-5acb-4e7a-9c92-f500e6bb2dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math\geometry">
+      <UniqueIdentifier>{e2817350-206c-412d-a969-03b20468f4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\platform\windows">
+      <UniqueIdentifier>{86c73590-763b-4c1b-89a3-78136bb7fe25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\physics">
+      <UniqueIdentifier>{ad25e9b4-4137-426e-9775-34df22c92525}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\scythe\include\declare_main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\application\application.h">
+      <Filter>src\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\application\desktop_application.h">
+      <Filter>src\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\application\opengl_application.h">
+      <Filter>src\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\enum_table.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\log.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\non_copyable.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\notification.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\platform.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\sc_assert.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\singleton.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\types.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\containers\lru_cache.h">
+      <Filter>src\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\event\event.h">
+      <Filter>src\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\event\event_listener.h">
+      <Filter>src\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\directory.h">
+      <Filter>src\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\file_operations.h">
+      <Filter>src\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\filename.h">
+      <Filter>src\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\context.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\cubemap_face_filler.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\cubemap_fill_type.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\font.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\index_buffer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\renderer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\shader.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\text.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\texture.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\vertex_buffer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\vertex_format.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\video_memory_buffer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_context.h">
+      <Filter>src\graphics\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_include.h">
+      <Filter>src\graphics\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_renderer.h">
+      <Filter>src\graphics\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_texture.h">
+      <Filter>src\graphics\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\image\image.h">
+      <Filter>src\image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\input\keys.h">
+      <Filter>src\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\input\mouse.h">
+      <Filter>src\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\line.h">
+      <Filter>src\math\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\point.h">
+      <Filter>src\math\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\polygon.h">
+      <Filter>src\math\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\segment.h">
+      <Filter>src\math\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\common_math.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\line.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\segment.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vertical_profile.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_part.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_parts_enumerator.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\model.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\tiny_obj_loader.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\model\vertex.h">
+      <Filter>src\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\planet\planet_navigation.h">
+      <Filter>src\planet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\desktop_main_wrapper.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\platform_inner.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\window_controller.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\window_struct.h">
+      <Filter>src\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\file_stream.h">
+      <Filter>src\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\log_stream.h">
+      <Filter>src\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\memory_stream.h">
+      <Filter>src\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\stream.h">
+      <Filter>src\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\tasks\service.h">
+      <Filter>src\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\tasks\service_task_interface.h">
+      <Filter>src\tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\time\clock.h">
+      <Filter>src\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\time\scope_timer.h">
+      <Filter>src\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\time\time_manager.h">
+      <Filter>src\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\time\update_timer.h">
+      <Filter>src\time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\board.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\button.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\console.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\ui_drawable.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\label.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\progress_bar.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\rect.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\renderable.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\slider.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\widget.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\camera.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\color.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\crypt.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\drawable.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\endianness.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\ini_file.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\material.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\node.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\resource.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\resource_manager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\string_id.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\ref.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\sc_delete.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\common\string_format.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\constants.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector2.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\quaternion.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector3.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector4.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\matrix4.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\matrix3.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\bounding_box.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\bounding_sphere.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\frustum.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\plane.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\ray.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\math\transform.h">
+      <Filter>src\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\bullet_include.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_collision_object.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_collision_shape.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_controller.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_ghost_object.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_hinge_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_socket_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_vehicle.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_vehicle_wheel.h">
+      <Filter>src\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\shader_info.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\scythe\src\application\application.cpp">
+      <Filter>src\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\application\desktop_application.cpp">
+      <Filter>src\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\application\opengl_application.cpp">
+      <Filter>src\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\event\event.cpp">
+      <Filter>src\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\directory.cpp">
+      <Filter>src\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\file_operations.cpp">
+      <Filter>src\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\filename.cpp">
+      <Filter>src\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\context.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\cubemap_face_filler.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\font.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\index_buffer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\renderer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\shader.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\text.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\texture.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\vertex_buffer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\vertex_format.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\video_memory_buffer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_context.cpp">
+      <Filter>src\graphics\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_renderer.cpp">
+      <Filter>src\graphics\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_texture.cpp">
+      <Filter>src\graphics\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_bmp.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_hdr.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_jpeg.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_png.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_rescale.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_tga.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_tif.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\input\keys.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\input\mouse.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\geometry\polygon.cpp">
+      <Filter>src\math\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\common_math.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\constants.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\segment.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vertical_profile.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_box.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_cube.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_obj.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_part.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_physical_box.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_quad_fullscreen.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_scm.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_sphere.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_tetrahedron.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_parts_enumerator.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\model\model.cpp">
+      <Filter>src\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\planet\planet_navigation.cpp">
+      <Filter>src\planet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\platform\windows\window_controller.cpp">
+      <Filter>src\platform\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\platform\desktop_main_wrapper.cpp">
+      <Filter>src\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\file_stream.cpp">
+      <Filter>src\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\log_stream.cpp">
+      <Filter>src\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\memory_stream.cpp">
+      <Filter>src\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\stream.cpp">
+      <Filter>src\stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\tasks\service.cpp">
+      <Filter>src\tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\time\clock.cpp">
+      <Filter>src\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\time\scope_timer.cpp">
+      <Filter>src\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\time\time_manager.cpp">
+      <Filter>src\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\time\update_timer.cpp">
+      <Filter>src\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\board.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\button.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\console.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\ui_drawable.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\label.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\progress_bar.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\rect.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\slider.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\widget.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\camera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\color.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\crypt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\drawable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\endianness.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\ini_file.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\node.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\resource_manager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\string_id.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\common\ref.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\common\log.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\common\notification.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector2.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\quaternion.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector3.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector4.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\matrix4.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\matrix3.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\bounding_box.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\bounding_sphere.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\frustum.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\plane.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\ray.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\math\transform.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_collision_object.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_collision_shape.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_controller.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_ghost_object.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_hinge_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_socket_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_vehicle.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_vehicle_wheel.cpp">
+      <Filter>src\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\shader_info.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\deps\scythe\src\math\vector2.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\quaternion.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\vector3.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\vector4.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\matrix4.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\matrix3.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\bounding_box.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\bounding_sphere.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\plane.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\math\ray.inl">
+      <Filter>src\math</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\physics\physics_constraint.inl">
+      <Filter>src\physics</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.inl">
+      <Filter>src\physics</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.inl">
+      <Filter>src\physics</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.inl">
+      <Filter>src\physics</Filter>
+    </None>
+    <None Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.inl">
+      <Filter>src\physics</Filter>
+    </None>
+  </ItemGroup>
+</Project>

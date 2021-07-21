@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{d26e1029-1952-41cd-8256-3c11905d0fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{122c4351-7780-4ff0-b6e3-70ada969ef45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rasterizer">
+      <UniqueIdentifier>{97250c98-34a6-49b8-a6c4-d703dd76c30e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\util">
+      <UniqueIdentifier>{79337990-78fc-4d6d-b53c-9236811ccf90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps">
+      <UniqueIdentifier>{6c96a4f4-cb37-475f-bd96-106c876e4fb7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\saim\include\saim.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\include\saim_provider_info.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\deps\tinycthread.h">
+      <Filter>deps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_file_op.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_list.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_map.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_memory.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_set.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_stack.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_string.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_buffer.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info_list.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info_pair.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_map.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair_list.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_jpeg.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_png.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_mercator.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_rasterizer.h">
+      <Filter>src\rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_cache.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_curl_wrapper.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_data_info.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_data_key.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_defines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_file.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_map_nodes_list.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_offset_map.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_pair.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_region.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_set.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_manager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_provider.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_info.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_map.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_map_pair.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_service.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_service_task.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_regions_header_file.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_file.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info_map.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info_pair.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_tile_service.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\saim\src\saim_tile_service_task.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\saim\deps\tinycthread.c">
+      <Filter>deps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_file_op.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_list.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_map.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_memory.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_set.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_stack.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_string.c">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_buffer.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info_list.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info_pair.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_map.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair_list.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_jpeg.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_png.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_mercator.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_rasterizer.c">
+      <Filter>src\rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_cache.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_curl_wrapper.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_data_key.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_file.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_map_nodes_list.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_offset_map.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_pair.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_region.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_set.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_main.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_manager.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_provider.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_info.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_map.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_map_pair.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_service.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_service_task.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_regions_header_file.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_file.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info_map.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info_pair.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_tile_service.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\saim\src\saim_tile_service_task.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

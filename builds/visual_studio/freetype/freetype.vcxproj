@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{88B03D0B-2347-4FE3-8993-1165F0B9A113}</ProjectGuid>
+    <RootNamespace>freetype</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="freetype.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="freetype.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="freetype.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="freetype.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\autofit\autofit.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftbase.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftbbox.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftbitmap.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftfntfmt.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftfstype.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftgasp.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftglyph.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftgxval.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftinit.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftlcdfil.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftmm.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftotval.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftpatent.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftpfr.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftstroke.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftsynth.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftsystem.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\fttype1.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\base\ftwinfnt.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\bdf\bdf.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\cache\ftcache.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\cff\cff.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\cid\type1cid.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\gzip\ftgzip.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\lzw\ftlzw.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\pcf\pcf.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\pfr\pfr.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\psaux\psaux.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\pshinter\pshinter.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\psnames\psmodule.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\raster\raster.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\sfnt\sfnt.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\smooth\smooth.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\truetype\truetype.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\type1\type1.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\type42\type42.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\winfonts\ftdebug.c" />
+    <ClCompile Include="..\..\..\deps\thirdparty\freetype\src\winfonts\winfnt.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

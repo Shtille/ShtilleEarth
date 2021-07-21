@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FAA20F17-4113-41C7-A95B-C4CB199AFEB8}</ProjectGuid>
+    <RootNamespace>libsaim</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="libsaim.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="libsaim.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="libsaim.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="libsaim.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\saim\deps\tinycthread.h" />
+    <ClInclude Include="..\..\..\deps\saim\include\saim.h" />
+    <ClInclude Include="..\..\..\deps\saim\include\saim_provider_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_buffer.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info_list.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info_pair.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_map.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair_list.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_jpeg.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_png.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_mercator.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\rasterizer\saim_rasterizer.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_cache.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_curl_wrapper.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_data_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_data_key.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_defines.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_file.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_map_nodes_list.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_offset_map.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_pair.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_region.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_key_set.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_manager.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_provider.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_regions_header_file.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_map.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_map_pair.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_service.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_region_service_task.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_file.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info_map.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_storage_info_pair.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_tile_service.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\saim_tile_service_task.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_file_op.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_list.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_map.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_memory.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_set.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_stack.h" />
+    <ClInclude Include="..\..\..\deps\saim\src\util\saim_string.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\saim\deps\tinycthread.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_buffer.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_cache_info_list.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_info_pair.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_bitmap_map.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_data_pair_list.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_jpeg.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_decoder_png.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_mercator.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\rasterizer\saim_rasterizer.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_cache.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_curl_wrapper.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_data_key.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_file.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_map_nodes_list.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_offset_map.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_pair.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_region.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_key_set.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_main.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_manager.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_provider.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_regions_header_file.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_info.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_map.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_map_pair.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_service.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_region_service_task.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_file.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info_map.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_storage_info_pair.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_tile_service.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\saim_tile_service_task.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_file_op.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_list.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_map.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_memory.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_set.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_stack.c" />
+    <ClCompile Include="..\..\..\deps\saim\src\util\saim_string.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

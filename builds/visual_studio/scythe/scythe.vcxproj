@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C54A1D1C-34FD-4299-8A79-2DAAC4C960AF}</ProjectGuid>
+    <RootNamespace>scythe</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="scythe.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="scythe.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="scythe.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\output_libs.props" />
+    <Import Project="scythe.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\scythe\include\declare_main.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\application\application.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\application\desktop_application.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\application\opengl_application.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\camera.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\color.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\enum_table.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\log.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\non_copyable.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\notification.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\platform.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\ref.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\sc_assert.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\sc_delete.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\singleton.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\string_format.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\common\types.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\containers\lru_cache.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\crypt.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\drawable.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\endianness.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\event\event.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\event\event_listener.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\directory.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\filename.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\filesystem\file_operations.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\context.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\cubemap_face_filler.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\cubemap_fill_type.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\font.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\index_buffer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_context.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_include.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_renderer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_texture.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\renderer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\shader.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\shader_info.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\text.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\texture.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\vertex_buffer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\vertex_format.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\graphics\video_memory_buffer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\image\image.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ini_file.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\input\keys.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\input\mouse.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\material.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\bounding_box.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\bounding_sphere.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\common_math.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\constants.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\frustum.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\line.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\point.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\polygon.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\geometry\segment.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\line.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\matrix3.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\matrix4.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\plane.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\quaternion.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\ray.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\segment.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\transform.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector2.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector3.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vector4.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\math\vertical_profile.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_part.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_parts_enumerator.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\model.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\tiny_obj_loader.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\model\vertex.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\node.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\bullet_include.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_collision_object.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_collision_shape.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_controller.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_ghost_object.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_hinge_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_socket_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_vehicle.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\physics\physics_vehicle_wheel.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\planet\planet_navigation.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\desktop_main_wrapper.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\platform_inner.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\window_controller.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\platform\window_struct.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\resource.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\resource_manager.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\file_stream.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\log_stream.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\memory_stream.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\stream\stream.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\string_id.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\tasks\service.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\tasks\service_task_interface.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\time\clock.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\time\scope_timer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\time\time_manager.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\time\update_timer.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\board.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\button.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\console.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\ui_drawable.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\label.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\progress_bar.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\rect.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\renderable.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\slider.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\ui\widget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\scythe\src\application\application.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\application\desktop_application.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\application\opengl_application.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\camera.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\color.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\common\log.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\common\notification.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\common\ref.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\crypt.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\drawable.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\endianness.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\event\event.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\directory.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\filename.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\filesystem\file_operations.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\context.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\cubemap_face_filler.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\font.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\index_buffer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_context.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_renderer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\opengl\opengl_texture.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\renderer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\shader.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\shader_info.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\text.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\texture.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\vertex_buffer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\vertex_format.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\graphics\video_memory_buffer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_bmp.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_hdr.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_jpeg.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_png.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_rescale.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_tga.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\image\image_tif.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ini_file.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\input\keys.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\input\mouse.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\bounding_box.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\bounding_sphere.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\common_math.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\constants.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\frustum.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\geometry\polygon.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\matrix3.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\matrix4.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\plane.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\quaternion.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\ray.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\segment.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\transform.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector2.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector3.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vector4.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\math\vertical_profile.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_box.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_cube.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_obj.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_part.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_physical_box.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_quad_fullscreen.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_scm.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_sphere.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_tetrahedron.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_parts_enumerator.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\model\model.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\node.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_collision_object.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_collision_shape.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_controller.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_ghost_object.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_hinge_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_socket_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_vehicle.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\physics\physics_vehicle_wheel.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\planet\planet_navigation.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\platform\desktop_main_wrapper.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\platform\windows\window_controller.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\resource_manager.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\file_stream.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\log_stream.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\memory_stream.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\stream\stream.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\string_id.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\tasks\service.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\time\clock.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\time\scope_timer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\time\time_manager.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\time\update_timer.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\board.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\button.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\console.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\ui_drawable.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\label.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\progress_bar.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\rect.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\slider.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\ui\widget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\deps\scythe\src\math\bounding_box.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\bounding_sphere.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\matrix3.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\matrix4.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\plane.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\quaternion.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\ray.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\vector2.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\vector3.inl" />
+    <None Include="..\..\..\deps\scythe\src\math\vector4.inl" />
+    <None Include="..\..\..\deps\scythe\src\physics\physics_constraint.inl" />
+    <None Include="..\..\..\deps\scythe\src\physics\physics_fixed_constraint.inl" />
+    <None Include="..\..\..\deps\scythe\src\physics\physics_generic_constraint.inl" />
+    <None Include="..\..\..\deps\scythe\src\physics\physics_rigid_body.inl" />
+    <None Include="..\..\..\deps\scythe\src\physics\physics_spring_constraint.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
