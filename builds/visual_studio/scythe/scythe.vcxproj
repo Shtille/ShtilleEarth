@@ -195,6 +195,9 @@
     <ClInclude Include="..\..\..\deps\scythe\src\math\vector3.h" />
     <ClInclude Include="..\..\..\deps\scythe\src\math\vector4.h" />
     <ClInclude Include="..\..\..\deps\scythe\src\math\vertical_profile.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\pool_allocator.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\stack_linked_list.h" />
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\stl_pool_allocator.h" />
     <ClInclude Include="..\..\..\deps\scythe\src\model\mesh.h" />
     <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_part.h" />
     <ClInclude Include="..\..\..\deps\scythe\src\model\mesh_parts_enumerator.h" />
@@ -304,6 +307,7 @@
     <ClCompile Include="..\..\..\deps\scythe\src\math\vector3.cpp" />
     <ClCompile Include="..\..\..\deps\scythe\src\math\vector4.cpp" />
     <ClCompile Include="..\..\..\deps\scythe\src\math\vertical_profile.cpp" />
+    <ClCompile Include="..\..\..\deps\scythe\src\memory\pool_allocator.cpp" />
     <ClCompile Include="..\..\..\deps\scythe\src\model\mesh.cpp" />
     <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_box.cpp" />
     <ClCompile Include="..\..\..\deps\scythe\src\model\mesh_cube.cpp" />

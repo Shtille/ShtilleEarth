@@ -1,15 +1,30 @@
 #include "planet_service.h"
 
 #include <functional>
+#include <new>
 
-PlanetService::PlanetService()
-	: face_(-1)
-	, lod_(-1)
-	, x_(-1)
-	, y_(-1)
-	, finishing_(false)
-	, done_(false)
-	, has_task_(false)
+/**
+ * Predicate for mathing all task with specified key
+ */
+class KeyMatchPredicate {
+public:
+	KeyMatchPredicate(const PlanetKey& key)
+	: key_(key)
+	{
+
+	}
+
+	bool operator()(const PlanetTask * task)
+	{
+		return task->key() == key_;
+	}
+private:
+	PlanetKey key_;
+};
+
+PlanetService::PlanetService(PlanetTileProvider * tile_provider)
+: task_factory_(tile_provider)
+, finishing_(false)
 {
 }
 PlanetService::~PlanetService()
@@ -33,73 +48,79 @@ void PlanetService::StopService()
 		thread_.join();
 	}
 }
-bool PlanetService::CheckRegionStatus(int face, int lod, int x, int y)
+void PlanetService::AddAlbedoTask(const PlanetKey& key)
 {
-	std::lock_guard<std::mutex> guard(mutex_);
-	if (done_)
-	{
-		// Notify owner that task is done and fall into sleep
-		done_ = false;
-		return true;
-	}
-	has_task_ = true;
-	face_ = face;
-	lod_ = lod;
-	x_ = x;
-	y_ = y;
-	// Wake up our thread
+	PlanetTask * task = task_factory_.CreateAlbedoTask(key);
+	{//---
+		std::lock_guard<std::mutex> guard(mutex_);
+		tasks_.push_back(task);
+	}//---
+	// Wake up our thread if it sleeps
 	condition_variable_.notify_one();
-	return false;
 }
-const scythe::Image& PlanetService::image()
+void PlanetService::ReleaseTask(PlanetTask * task)
 {
-	// We shouldn't protect image via mutex because this thread will be stopped when image is accessed
-	return image_;
+	task_factory_.DestroyTask(task);
 }
-bool PlanetService::Initialize()
+void PlanetService::RemoveTasks(const PlanetKey& key)
 {
-	return true;
+	KeyMatchPredicate predicate(key);
+	{//---
+		std::lock_guard<std::mutex> guard(mutex_);
+		tasks_.remove_if(predicate);
+	}//---
 }
-void PlanetService::Deinitialize()
+bool PlanetService::GetDoneTasks(TaskList& list)
 {
-}
-void PlanetService::ObtainTileParameters(int* face, int* lod, int* x, int* y)
-{
-	std::lock_guard<std::mutex> guard(mutex_);
-	*face = face_;
-	*lod = lod_;
-	*x = x_;
-	*y = y_;
+	{//---
+		std::lock_guard<std::mutex> guard(mutex_);
+		if (done_tasks_.empty())
+			return false;
+		else
+		{
+			done_tasks_.swap(list);
+			return true;
+		}
+	}//---
 }
 void PlanetService::ThreadFunc()
 {
+	PlanetTask * task = nullptr;
 	bool finishing = false;
-	bool has_task = false;
-	bool done = false;
 	for (;;)
 	{
 		{//---
 			std::lock_guard<std::mutex> guard(mutex_);
-			if (has_task && done)
+			// Store processed task
+			if (task != nullptr)
 			{
-				done_ = true;
-				has_task_ = false;
+				done_tasks_.push_back(task);
 			}
+			// Get new task
+			if (!tasks_.empty())
+			{
+				task = tasks_.front();
+				tasks_.pop_front();
+			}
+			else
+				task = nullptr;
+			// Fetch flags
 			finishing = finishing_;
-			has_task = has_task_;
 		}//---
 
 		if (finishing)
 			break;
 
-		if (!has_task)
+		if (task != nullptr)
+		{
+			task->Execute();
+		}
+		else
 		{
 			std::unique_lock<std::mutex> guard(mutex_);
-			while (!finishing_ && !has_task_)
+			while (!finishing_ && tasks_.empty())
 				condition_variable_.wait(guard);
 			continue;
 		}
-
-		done = Execute();
 	}
 }

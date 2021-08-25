@@ -2,12 +2,15 @@
 #define __PLANET_CUBE_H__
 
 #include "planet_tree.h"
+#include "planet_tile_provider.h"
+#include "planet_service.h"
 
 #include "common/non_copyable.h"
 #include "camera.h"
 
 #include <list>
 #include <set>
+#include <map>
 #include <queue>
 
 namespace scythe {
@@ -18,9 +21,7 @@ namespace scythe {
 
 // Forward declarations
 class PlanetTileMesh;
-class PlanetMap;
 class PlanetMapTile;
-class PlanetService;
 
 struct LodParams {
 	int limit;
@@ -60,9 +61,10 @@ class PlanetCube final : public scythe::NonCopyable {
 	typedef std::list<RequestType> RequestQueue;
 	typedef std::set<PlanetTreeNode*> NodeSet;
 	typedef std::priority_queue<PlanetTreeNode*, std::vector<PlanetTreeNode*>, PlanetTreeNodeCompareLastOpened> NodeHeap;
+	typedef std::map<PlanetKey, PlanetTreeNode*> KeyNodeMap;
 
 public:
-	PlanetCube(PlanetService * albedo_service, scythe::Renderer * renderer, scythe::Shader * shader,
+	PlanetCube(PlanetTileProvider * tile_provider, scythe::Renderer * renderer, scythe::Shader * shader,
 		scythe::CameraManager * camera, scythe::Frustum * frustum, const scythe::Vector3& planet_position, float radius);
 	~PlanetCube();
 
@@ -91,15 +93,19 @@ protected:
 	void HandleRequests(RequestQueue& requests);
 	void HandleRenderRequests();
 	void HandleInlineRequests();
+	void ProcessDoneTasks();
+	void ProcessTask(const PlanetTask * task);
 
 	bool HandleRenderable(PlanetTreeNode* node);
 	bool HandleMapTile(PlanetTreeNode* node);
 	bool HandleSplit(PlanetTreeNode* node);
 	bool HandleMerge(PlanetTreeNode* node);
 
+	void RequestTexture(PlanetTreeNode* node);
+
 	void PruneTree();
 	void PreprocessTree();
-	void RefreshMapTile(PlanetTreeNode* node, PlanetMapTile* tile);
+	void RefreshMapTile(PlanetTreeNode* node, PlanetMapTile* old_tile, PlanetMapTile* new_tile);
 
 private:
 	scythe::Renderer * renderer_;
@@ -114,7 +120,9 @@ private:
 	scythe::Vector3 planet_position_; //!< planet position
 	const float radius_; //!< planet radius
 	PlanetTileMesh * tile_;
-	PlanetMap * map_;
+
+	KeyNodeMap key_node_map_;
+	PlanetService service_;
 
 	RequestQueue inline_requests_;
 	RequestQueue render_requests_;

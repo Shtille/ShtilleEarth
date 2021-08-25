@@ -1,49 +1,69 @@
 #ifndef __PLANET_SERVICE_H__
 #define __PLANET_SERVICE_H__
 
-#include "image/image.h"
+#include "planet_key.h"
+#include "planet_task.h"
+#include "planet_task_factory.h"
+#include "planet_tile_provider.h"
 
+#include "common/non_copyable.h"
+#include "image/image.h"
+#include "memory/stl_pool_allocator.h"
+
+#include <list>
 #include <mutex>
 #include <condition_variable>
 #include <thread>
 
-class PlanetService {
+class PlanetService : public scythe::NonCopyable {
 public:
-	PlanetService();
-	virtual ~PlanetService();
+	typedef std::list< PlanetTask * > TaskList; /*, scythe::StlPoolAllocator<PlanetTask *>*/
+
+	PlanetService(PlanetTileProvider * tile_provider);
+	~PlanetService();
 
 	void RunService();
 	void StopService();
 
-	bool CheckRegionStatus(int face, int lod, int x, int y);
+	void AddAlbedoTask(const PlanetKey& key);
 
-	const scythe::Image& image();
+	/**
+	 * Releases memory occupied by task.
+	 * Should be called to free the task.
+	 * 
+	 * @param[in] task 	The task.
+	 */
+	void ReleaseTask(PlanetTask * task);
 
-	virtual bool Initialize();
-	virtual void Deinitialize();
+	/**
+	 * Removes all tasks that match the provided key
+	 * 
+	 * @param[in] key 	The key.
+	 */
+	void RemoveTasks(const PlanetKey& key);
 
-protected:
-	virtual bool Execute() = 0;	//!< returns true if texture filling has been completed
-	void ObtainTileParameters(int* face, int* lod, int* x, int* y);
-
-	scythe::Image image_;
+	/**
+	 * Swaps done tasks list with provided list
+	 * 
+	 * @param[in] list 	The task list to be filled.
+	 * @return 			Returns true if there is any done task and false otherwise.
+	 */
+	bool GetDoneTasks(TaskList& list);
 
 private:
-	PlanetService(PlanetService&) = delete;
-	PlanetService& operator=(PlanetService&) = delete;
 
 	void ThreadFunc();
+
+	PlanetTaskFactory task_factory_;
+
+	TaskList tasks_;
+	TaskList done_tasks_;
 
 	std::mutex mutex_;
 	std::condition_variable condition_variable_;
 	std::thread thread_;
-	int face_;
-	int lod_;
-	int x_;
-	int y_;
+
 	bool finishing_;
-	bool done_;
-	bool has_task_;
 };
 
 #endif

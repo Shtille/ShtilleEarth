@@ -11,8 +11,12 @@ class PlanetMapTile;
 //!
 class PlanetRenderable {
 public:
-	PlanetRenderable(PlanetTreeNode * node, PlanetMapTile * map_tile);
+	PlanetRenderable();
 	~PlanetRenderable();
+
+	void Create(PlanetTreeNode * node, PlanetMapTile * map_tile);
+	void Destroy();
+	void Update(PlanetTreeNode * node, PlanetMapTile * map_tile);
 
 	void SetFrameOfReference();
 

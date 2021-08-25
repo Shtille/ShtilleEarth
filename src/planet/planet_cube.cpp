@@ -1,8 +1,8 @@
 #include "planet_cube.h"
 #include "planet_tree.h"
 #include "planet_tile_mesh.h"
-#include "planet_map.h"
 #include "planet_renderable.h"
+#include "planet_albedo_task.h"
 
 #include "math/matrix3.h"
 #include "math/matrix4.h"
@@ -17,7 +17,7 @@ namespace {
 	const float kTexDetail = 3.0f;
 }
 
-PlanetCube::PlanetCube(PlanetService * albedo_service, scythe::Renderer * renderer, scythe::Shader * shader,
+PlanetCube::PlanetCube(PlanetTileProvider * tile_provider, scythe::Renderer * renderer, scythe::Shader * shader,
 	scythe::CameraManager * camera, scythe::Frustum * frustum, const scythe::Vector3& planet_position, float radius)
 	: renderer_(renderer)
 	, shader_(shader)
@@ -26,6 +26,7 @@ PlanetCube::PlanetCube(PlanetService * albedo_service, scythe::Renderer * render
 	, grid_size_(17)
 	, planet_position_(planet_position)
 	, radius_(radius)
+	, service_(tile_provider)
 	, frame_counter_(0)
 	, lod_freeze_(false)
 	, tree_freeze_(false)
@@ -34,14 +35,13 @@ PlanetCube::PlanetCube(PlanetService * albedo_service, scythe::Renderer * render
 	for (int i = 0; i < kNumFaces; ++i)
 		faces_[i] = new PlanetTree(this, i);
 	tile_ = new PlanetTileMesh(renderer, grid_size_);
-	map_ = new PlanetMap(albedo_service, renderer);
 }
 PlanetCube::~PlanetCube()
 {
 	for (int i = 0; i < kNumFaces; ++i)
 		delete faces_[i];
 	delete tile_;
-	delete map_; // should be deleted after faces are done
+	service_.StopService();
 }
 bool PlanetCube::Initialize()
 {
@@ -52,11 +52,11 @@ bool PlanetCube::Initialize()
 		};
 		renderer_->AddVertexFormat(object_vertex_format, attributes, _countof(attributes));
 	}
-    tile_->Create();
-    if (!tile_->MakeRenderable(object_vertex_format, nullptr, false))
-        return false;
-	if (!map_->Initialize())
+	tile_->Create();
+	if (!tile_->MakeRenderable(object_vertex_format, nullptr, false))
 		return false;
+	// Run service
+	service_.RunService();
 	return true;
 }
 void PlanetCube::SetParameters(float fovy_in_radians, int screen_height)
@@ -179,11 +179,6 @@ void PlanetCube::Unrequest(PlanetTreeNode* node)
 				// Remove item at front of queue.
 				if (i == (*request_queues[q]).begin())
 				{
-					// Special case: if unrequesting a maptile current being generated,
-					// make sure temp/unclaimed resources are cleaned up.
-					if ((*i).type == REQUEST_MAPTILE)
-						map_->ResetTile();
-
 					(*request_queues[q]).erase(i);
 					i = (*request_queues[q]).begin();
 					continue;
@@ -241,11 +236,52 @@ void PlanetCube::HandleRequests(RequestQueue& requests)
 }
 void PlanetCube::HandleRenderRequests()
 {
+	// Process tasks that have been done on a service thread
+	if (!preprocess_)
+		ProcessDoneTasks();
+
+	// Then handle requests
 	HandleRequests(render_requests_);
 }
 void PlanetCube::HandleInlineRequests()
 {
 	HandleRequests(inline_requests_);
+}
+void PlanetCube::ProcessDoneTasks()
+{
+	PlanetService::TaskList done_tasks;
+	if (service_.GetDoneTasks(done_tasks))
+	{
+		PlanetTask * task;
+		while (!done_tasks.empty())
+		{
+			task = done_tasks.front();
+			done_tasks.pop_front();
+			ProcessTask(task);
+			service_.ReleaseTask(task);
+		}
+	}
+}
+void PlanetCube::ProcessTask(const PlanetTask * task)
+{
+	PlanetTreeNode * node = nullptr;
+	auto it = key_node_map_.find(task->key());
+	if (it != key_node_map_.end())
+		node = it->second;
+	else
+		return;
+
+	switch (task->type())
+	{
+	case PlanetTaskType::kAlbedo:
+		{
+			const PlanetAlbedoTask * albedo_task = dynamic_cast<const PlanetAlbedoTask*>(task);
+			node->OnAlbedoTaskCompleted(*albedo_task->image(), albedo_task->completed());
+		}
+		break;
+	default:
+		break;
+	}
 }
 bool PlanetCube::HandleRenderable(PlanetTreeNode* node)
 {
@@ -259,24 +295,22 @@ bool PlanetCube::HandleRenderable(PlanetTreeNode* node)
 
 	// See if we can find a maptile to derive from.
 	PlanetTreeNode * ancestor = node;
-	while (ancestor->map_tile_ == 0 && ancestor->parent_) { ancestor = ancestor->parent_; };
+	while (!ancestor->has_map_tile_ && ancestor->parent_) { ancestor = ancestor->parent_; };
 
 	// See if map tile found is in acceptable LOD range (ie. gridsize <= texturesize).
-	if (ancestor->map_tile_)
+	if (ancestor->has_map_tile_)
 	{
 		int relativeLOD = node->lod_ - ancestor->lod_;
 		if (relativeLOD <= maxLOD)
 		{
 			// Replace existing renderable.
-			node->DestroyRenderable();
-			// Create renderable relative to the map tile.
-			node->CreateRenderable(ancestor->map_tile_);
+			node->RefreshRenderable(&ancestor->map_tile_);
 			node->request_renderable_ = false;
 		}
 	}
 
 	// If no renderable was created, try creating a map tile.
-	if (node->request_renderable_ && !node->map_tile_ && !node->request_map_tile_)
+	if (node->request_renderable_ && !node->has_map_tile_ && !node->request_map_tile_)
 	{
 		// Request a map tile for this node's LOD level.
 		node->request_map_tile_ = true;
@@ -286,30 +320,42 @@ bool PlanetCube::HandleRenderable(PlanetTreeNode* node)
 }
 bool PlanetCube::HandleMapTile(PlanetTreeNode* node)
 {
-	// See if the map tile object for this node is ready yet.
-	if (!node->PrepareMapTile(map_))
+	node->request_map_tile_ = false;
+	bool has_albedo = node->map_tile_.HasAlbedoTexture();
+	if (!has_albedo)
 	{
-		// Needs more work.
-		Request(node, REQUEST_MAPTILE, true);
+		RequestTexture(node);
+	}
+	if (preprocess_)
+	{
+		// At preprocess stage we just need to enqueue tasks
 		return false;
 	}
-	else
+	bool tile_filled = has_albedo /*&& has_heightmap*/;
+	if (tile_filled)
 	{
-		// Assemble a map tile object for this node.
-		node->CreateMapTile(map_);
-		node->request_map_tile_ = false;
+		// Map tile is complete and can be used as ancestor
+		node->CreateMapTile();
 
 		// Request a new renderable to match.
-		node->request_renderable_ = true;
-		Request(node, REQUEST_RENDERABLE, true);
+		node->RefreshRenderable(&node->map_tile_);
+		node->request_renderable_ = false;
 
-		// See if any child renderables use the old maptile.
-		if (node->renderable_)
+		// See if any child renderables use the old map tile.
+		if (node->has_renderable_)
 		{
-			PlanetMapTile * old_tile = node->renderable_->GetMapTile();
-			RefreshMapTile(node, old_tile);
+			PlanetMapTile * old_tile = node->renderable_.GetMapTile();
+			RefreshMapTile(node, old_tile, &node->map_tile_);
 		}
+
 		return true;
+	}
+	else // ! tile_filled
+	{
+		// Repeat this request until is done
+		node->request_map_tile_ = true;
+		Request(node, REQUEST_MAPTILE, false);
+		return false;
 	}
 }
 bool PlanetCube::HandleSplit(PlanetTreeNode* node)
@@ -331,6 +377,14 @@ bool PlanetCube::HandleMerge(PlanetTreeNode* node)
 	node->request_merge_ = false;
 	return true;
 }
+void PlanetCube::RequestTexture(PlanetTreeNode* node)
+{
+	if (!node->request_albedo_)
+	{
+		node->request_albedo_ = true;
+		service_.AddAlbedoTask(node->GetKey());
+	}
+}
 void PlanetCube::PruneTree()
 {
 	NodeHeap heap;
@@ -350,10 +404,10 @@ void PlanetCube::PruneTree()
 			!old_node->request_merge_ &&
 			(GetFrameCounter() - old_node->last_opened_ > 100))
 		{
-			old_node->renderable_->SetFrameOfReference();
+			old_node->renderable_.SetFrameOfReference();
 			// Make sure node's children are too detailed rather than just invisible.
-			if (old_node->renderable_->IsFarAway() ||
-				(old_node->renderable_->IsInLODRange() && old_node->renderable_->IsInMIPRange())
+			if (old_node->renderable_.IsFarAway() ||
+				(old_node->renderable_.IsInLODRange() && old_node->renderable_.IsInMIPRange())
 				)
 			{
 				old_node->request_merge_ = true;
@@ -377,18 +431,18 @@ void PlanetCube::PreprocessTree()
 	}
 	while (!render_requests_.empty() || !inline_requests_.empty());
 }
-void PlanetCube::RefreshMapTile(PlanetTreeNode* node, PlanetMapTile* tile)
+void PlanetCube::RefreshMapTile(PlanetTreeNode* node, PlanetMapTile* old_tile, PlanetMapTile* new_tile)
 {
 	for (int i = 0; i < 4; ++i)
 	{
 		PlanetTreeNode* child = node->children_[i];
-		if (child && child->renderable_ && child->renderable_->GetMapTile() == tile)
+		if (child && child->has_renderable_ && child->renderable_.GetMapTile() == old_tile)
 		{
-			child->request_renderable_ = true;
-			Request(child, REQUEST_RENDERABLE, true);
+			// Refresh renderable relative to the map tile.
+			child->RefreshRenderable(new_tile);
 
 			// Recurse
-			RefreshMapTile(child, tile);
+			RefreshMapTile(child, old_tile, new_tile);
 		}
 	}
 }

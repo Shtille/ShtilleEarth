@@ -3,7 +3,6 @@
 #include "planet_cube.h"
 #include "constants.h"
 #include "planet_map_tile.h"
-#include "planet_map.h"
 #include "planet_renderable.h"
 
 #include "graphics/shader.h"
@@ -11,11 +10,13 @@
 
 PlanetTreeNode::PlanetTreeNode(PlanetTree * tree)
 	: owner_(tree)
-	, map_tile_(nullptr)
-	, renderable_(nullptr)
+	, map_tile_()
+	, renderable_()
 	, lod_(0)
 	, x_(0)
 	, y_(0)
+	, has_map_tile_(false)
+	, has_renderable_(false)
 	, has_children_(false)
 	, page_out_(false)
 	, request_page_out_(false)
@@ -23,9 +24,11 @@ PlanetTreeNode::PlanetTreeNode(PlanetTree * tree)
 	, request_renderable_(false)
 	, request_split_(false)
 	, request_merge_(false)
+	, request_albedo_(false)
 	, parent_slot_(-1)
 	, parent_(nullptr)
 {
+	map_tile_.SetNode(this);
 	last_opened_ = last_rendered_ = owner_->cube_->GetFrameCounter();
 	for (int i = 0; i < kNumChildren; ++i)
 		children_[i] = nullptr;
@@ -42,13 +45,22 @@ PlanetTreeNode::~PlanetTreeNode()
 }
 const float PlanetTreeNode::GetPriority() const
 {
-	if (!renderable_)
+	if (!has_renderable_)
 	{
 		if (parent_)
 			return parent_->GetPriority();
 		return 0.0f;
 	}
-	return renderable_->GetLodPriority();
+	return renderable_.GetLodPriority();
+}
+const PlanetKey PlanetTreeNode::GetKey() const
+{
+	int face = owner_->face_;
+	return PlanetKey(face, lod_, x_, y_);
+}
+scythe::Renderer * PlanetTreeNode::GetRenderer()
+{
+	return owner_->cube_->renderer_;
 }
 bool PlanetTreeNode::IsSplit()
 {
@@ -68,74 +80,91 @@ void PlanetTreeNode::AttachChild(PlanetTreeNode * child, int position)
 	child->y_ = y_ * 2 + (position / 2);
 
 	has_children_ = true;
+
+	// Add child to key node map
+	child->AddToNodeMap();
 }
 void PlanetTreeNode::DetachChild(int position)
 {
 	if (children_[position])
 	{
+		// Remove child from key node map
+		children_[position]->RemoveFromNodeMap();
+
 		delete children_[position];
 		children_[position] = nullptr;
 
 		has_children_ = children_[0] || children_[1] || children_[2] || children_[3];
 	}
 }
+void PlanetTreeNode::AddToNodeMap()
+{
+	owner_->cube_->key_node_map_.insert({GetKey(), this});
+}
+void PlanetTreeNode::RemoveFromNodeMap()
+{
+	owner_->cube_->key_node_map_.erase(GetKey());
+}
 void PlanetTreeNode::PropagateLodDistances()
 {
-	if (renderable_)
+	if (has_renderable_)
 	{
 		float max_child_distance = 0.0f;
 		// Get maximum LOD distance of all children.
 		for (int i = 0; i < kNumChildren; ++i)
 		{
-			if (children_[i] && children_[i]->renderable_)
+			if (children_[i] && children_[i]->has_renderable_)
 			{
 				// Increase LOD distance w/ centroid distances, to ensure proper LOD nesting.
-				float child_distance = children_[i]->renderable_->GetLodDistance();
+				float child_distance = children_[i]->renderable_.GetLodDistance();
 				if (max_child_distance < child_distance)
 					max_child_distance = child_distance;
 			}
 		}
 		// Store in renderable.
-		renderable_->SetChildLodDistance(max_child_distance);
+		renderable_.SetChildLodDistance(max_child_distance);
 	}
 	// Propagate changes to parent.
 	if (parent_)
 		parent_->PropagateLodDistances();
 }
-bool PlanetTreeNode::PrepareMapTile(PlanetMap* map)
+void PlanetTreeNode::CreateMapTile()
 {
-	return map->PrepareTile(this);
-}
-void PlanetTreeNode::CreateMapTile(PlanetMap* map)
-{
-	if (map_tile_)
-		throw "Creating map tile that already exists.";
-	map_tile_ = map->FinalizeTile(this);
+	assert(!has_map_tile_);
+	has_map_tile_ = true;
+	map_tile_.Create(this);
 }
 void PlanetTreeNode::DestroyMapTile()
 {
-	if (map_tile_) delete map_tile_;
-	map_tile_ = nullptr;
+	map_tile_.Destroy();
+	has_map_tile_ = false;
 }
-void PlanetTreeNode::CreateRenderable(PlanetMapTile* map)
+void PlanetTreeNode::CreateRenderable(PlanetMapTile * map_tile)
 {
-	if (renderable_)
-		throw "Creating renderable that already exists.";
+	assert(!has_renderable_);
 	if (page_out_)
 		page_out_ = false;
-	renderable_ = new PlanetRenderable(this, map);
+	has_renderable_ = true;
+	renderable_.Create(this, map_tile);
 	PropagateLodDistances();
 }
 void PlanetTreeNode::DestroyRenderable()
 {
-	if (renderable_) delete renderable_;
-	renderable_ = nullptr;
+	renderable_.Destroy();
+	has_renderable_ = false;
+	PropagateLodDistances();
+}
+void PlanetTreeNode::RefreshRenderable(PlanetMapTile * map_tile)
+{
+	renderable_.Update(this, map_tile);
+	page_out_ = false;
+	has_renderable_ = true;
 	PropagateLodDistances();
 }
 bool PlanetTreeNode::WillRender()
 {
 	// Being asked to render ourselves.
-	if (!renderable_)
+	if (!has_renderable_)
 	{
 		last_opened_ = last_rendered_ = owner_->cube_->GetFrameCounter();
 
@@ -185,25 +214,25 @@ int PlanetTreeNode::Render()
 	}
 
 	// If we are renderable, check LOD/visibility.
-	if (renderable_)
+	if (has_renderable_)
 	{
-		renderable_->SetFrameOfReference();
+		renderable_.SetFrameOfReference();
 
 		// If invisible, return immediately.
-		if (renderable_->IsClipped())
+		if (renderable_.IsClipped())
 			return 1;
 
 		// Whether to recurse down.
 		bool recurse = false;
 
 		// If the texture is not fine enough...
-		if (!renderable_->IsInMIPRange())
+		if (!renderable_.IsInMIPRange())
 		{
 			// If there is already a native res map-tile...
-			if (map_tile_)
+			if (has_map_tile_)
 			{
 				// Make sure the renderable is up-to-date.
-				if (renderable_->GetMapTile() == map_tile_)
+				if (renderable_.GetMapTile() == &map_tile_)
 				{
 					// Split so we can try this again on the child tiles.
 					recurse = true;
@@ -215,7 +244,7 @@ int PlanetTreeNode::Render()
 				// Make sure no parents are waiting for tile data update.
 				PlanetTreeNode *ancestor = this;
 				bool parent_request = false;
-				while (ancestor && !ancestor->map_tile_ && !ancestor->page_out_)
+				while (ancestor && !ancestor->has_map_tile_ && !ancestor->page_out_)
 				{
 					if (ancestor->request_map_tile_ || ancestor->request_renderable_)
 					{
@@ -235,7 +264,7 @@ int PlanetTreeNode::Render()
 		}
 
 		// If the geometry is not fine enough...
-		if ((has_children_ || !request_map_tile_) && !renderable_->IsInLODRange())
+		if ((has_children_ || !request_map_tile_) && !renderable_.IsInLODRange())
 		{
 			// Go down an LOD level.
 			recurse = true;
@@ -261,7 +290,7 @@ int PlanetTreeNode::Render()
 							min_level = level;
 					}
 					// If we are a shallow node with a tile that is not being rendered or close to being rendered.
-					if (min_level > 1 && map_tile_ && false)
+					if (min_level > 1 && has_map_tile_ && false)
 					{
 						page_out_ = true;
 						DestroyRenderable();
@@ -298,17 +327,35 @@ void PlanetTreeNode::RenderSelf()
 	scythe::Matrix3 face_transform = PlanetCube::GetFaceTransform(owner_->face_);
 
 	// Vertex shader
-	shader->Uniform4fv("u_stuv_scale", renderable_->stuv_scale_);
-	shader->Uniform4fv("u_stuv_position", renderable_->stuv_position_);
-	shader->Uniform1f("u_skirt_height", renderable_->distance_);
+	shader->Uniform4fv("u_stuv_scale", renderable_.stuv_scale_);
+	shader->Uniform4fv("u_stuv_position", renderable_.stuv_position_);
+	shader->Uniform1f("u_skirt_height", renderable_.distance_);
 	shader->UniformMatrix3fv("u_face_transform", face_transform);
 
 	// Fragment shader
-	shader->Uniform4fv("u_color", renderable_->color_);
+	shader->Uniform4fv("u_color", renderable_.color_);
 
-	renderable_->GetMapTile()->BindTexture();
+	renderable_.GetMapTile()->BindTexture();
 
 	owner_->cube_->tile_->Render();
+}
+void PlanetTreeNode::OnAlbedoTaskCompleted(const scythe::Image& image, bool completed)
+{
+	request_albedo_ = false;
+	map_tile_.SetAlbedoImage(image);
+
+	// Remember old map tile before update
+	PlanetMapTile * old_tile = renderable_.GetMapTile();
+
+	// Refresh renderable relative to the map tile.
+	RefreshRenderable(&map_tile_);
+	request_renderable_ = false;
+
+	// See if any child renderables use the old map tile.
+	owner_->cube_->RefreshMapTile(this, old_tile, &map_tile_);
+
+	if (!completed) // repeat request
+		owner_->cube_->RequestTexture(this);
 }
 
 PlanetTree::PlanetTree(PlanetCube * cube, int face)
@@ -316,9 +363,15 @@ PlanetTree::PlanetTree(PlanetCube * cube, int face)
 	, face_(face)
 {
 	root_ = new PlanetTreeNode(this);
+
+	// Add root to key node map
+	root_->AddToNodeMap();
 }
 PlanetTree::~PlanetTree()
 {
+	// Remove root from key node map
+	root_->RemoveFromNodeMap();
+
 	delete root_;
 }
 void PlanetTree::Render()

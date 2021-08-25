@@ -67,6 +67,9 @@
     <Filter Include="src\physics">
       <UniqueIdentifier>{ad25e9b4-4137-426e-9775-34df22c92525}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\memory">
+      <UniqueIdentifier>{83c3e9d9-0930-4b52-bbbc-5103473b11b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\deps\scythe\include\declare_main.h">
@@ -423,6 +426,15 @@
     <ClInclude Include="..\..\..\deps\scythe\src\graphics\shader_info.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\pool_allocator.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\stack_linked_list.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\scythe\src\memory\stl_pool_allocator.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\deps\scythe\src\application\application.cpp">
@@ -745,6 +757,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\deps\scythe\src\graphics\shader_info.cpp">
       <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\scythe\src\memory\pool_allocator.cpp">
+      <Filter>src\memory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -128,24 +128,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\planet\constants.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_albedo_task.h" />
     <ClInclude Include="..\..\..\src\planet\planet_cube.h" />
-    <ClInclude Include="..\..\..\src\planet\planet_map.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_key.h" />
     <ClInclude Include="..\..\..\src\planet\planet_map_tile.h" />
     <ClInclude Include="..\..\..\src\planet\planet_renderable.h" />
     <ClInclude Include="..\..\..\src\planet\planet_service.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_task.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_task_factory.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_task_type.h" />
     <ClInclude Include="..\..\..\src\planet\planet_tile_mesh.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_tile_provider.h" />
     <ClInclude Include="..\..\..\src\planet\planet_tree.h" />
-    <ClInclude Include="..\..\..\src\earth_service.h" />
+    <ClInclude Include="..\..\..\src\planet\planet_union_task.h" />
+    <ClInclude Include="..\..\..\src\earth_tile_provider.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\planet\planet_albedo_task.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_cube.cpp" />
-    <ClCompile Include="..\..\..\src\planet\planet_map.cpp" />
+    <ClCompile Include="..\..\..\src\planet\planet_key.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_map_tile.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_renderable.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_service.cpp" />
+    <ClCompile Include="..\..\..\src\planet\planet_task.cpp" />
+    <ClCompile Include="..\..\..\src\planet\planet_task_factory.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_tile_mesh.cpp" />
     <ClCompile Include="..\..\..\src\planet\planet_tree.cpp" />
-    <ClCompile Include="..\..\..\src\earth_service.cpp" />
+    <ClCompile Include="..\..\..\src\earth_tile_provider.cpp" />
     <ClCompile Include="..\..\..\src\shtille_earth.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,21 +3,29 @@
 
 namespace scythe {
 	class Texture;
+	class Image;
 } // namespace scythe
 
-class PlanetMap;
 class PlanetTreeNode;
 
 class PlanetMapTile {
 public:
-	PlanetMapTile(PlanetMap * map, PlanetTreeNode * node, scythe::Texture * albedo_texture);
+	PlanetMapTile();
+	PlanetMapTile(PlanetTreeNode * node);
 	~PlanetMapTile();
 
+	void Create(PlanetTreeNode * node);
+	void Destroy();
+
+	void SetNode(PlanetTreeNode * node);
 	PlanetTreeNode * GetNode();
 	void BindTexture();
 
+	bool HasAlbedoTexture() const;
+
+	void SetAlbedoImage(const scythe::Image& image);
+
 private:
-	PlanetMap * map_; // owner
 	PlanetTreeNode * node_;
 	scythe::Texture * albedo_texture_;
 };

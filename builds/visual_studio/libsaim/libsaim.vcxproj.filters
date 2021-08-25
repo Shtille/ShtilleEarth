@@ -120,7 +120,7 @@
     <ClInclude Include="..\..\..\deps\saim\src\saim_key_set.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\deps\saim\src\saim_manager.h">
+    <ClInclude Include="..\..\..\deps\saim\src\saim_instance.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\deps\saim\src\saim_provider.h">
@@ -257,7 +257,7 @@
     <ClCompile Include="..\..\..\deps\saim\src\saim_main.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\deps\saim\src\saim_manager.c">
+    <ClCompile Include="..\..\..\deps\saim\src\saim_instance.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\deps\saim\src\saim_provider.c">

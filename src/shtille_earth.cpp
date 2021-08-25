@@ -1,4 +1,4 @@
-#include "earth_service.h"
+#include "earth_tile_provider.h"
 #include "planet/constants.h"
 #include "planet/planet_cube.h"
 
@@ -33,7 +33,7 @@ public:
 		, fps_text_(nullptr)
 		, camera_manager_(nullptr)
 		, planet_navigation_(nullptr)
-		, earth_service_(nullptr)
+		, earth_tile_provider_(nullptr)
 		, need_update_projection_matrix_(true)
 		, camera_animation_stopped_(false)
 	{
@@ -72,13 +72,15 @@ public:
 			return false;
 
 		camera_manager_ = new scythe::CameraManager();
-
-		earth_service_ = new EarthService();
 		
 		const float kAnimationTime = 1.0f;
 		planet_navigation_ = new scythe::PlanetNavigation(camera_manager_, kEarthPosition, kEarthRadius, kAnimationTime, kCameraDistance, 100.0f);
 
-		planet_ = new PlanetCube(earth_service_, renderer_, planet_shader_, camera_manager_, &frustum_, kEarthPosition, kEarthRadius);
+		earth_tile_provider_ = new EarthTileProvider();
+		if (!earth_tile_provider_->Initialize())
+			return false;
+
+		planet_ = new PlanetCube(earth_tile_provider_, renderer_, planet_shader_, camera_manager_, &frustum_, kEarthPosition, kEarthRadius);
 		if (!planet_->Initialize())
 			return false;
 
@@ -93,10 +95,10 @@ public:
 	{
 		if (planet_)
 			delete planet_;
+		if (earth_tile_provider_)
+			delete earth_tile_provider_;
 		if (planet_navigation_)
 			delete planet_navigation_;
-		if (earth_service_)
-			delete earth_service_;
 		if (camera_manager_)
 			delete camera_manager_;
 		if (fps_text_)
@@ -253,7 +255,7 @@ private:
 	scythe::CameraManager * camera_manager_;
 	scythe::PlanetNavigation * planet_navigation_;
 
-	EarthService * earth_service_;
+	EarthTileProvider * earth_tile_provider_;
 
 	scythe::Frustum frustum_;
 	
