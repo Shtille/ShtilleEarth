@@ -9,10 +9,12 @@ Total improvements:
 [+] 6. Add Earth position parameter to renderer class.
 [+] 7. Fix camera navigation.
 [+] 8. Add tree preprocess.
-[-] 9. Remove allocations on MapTile class.
-[-] 10. Remove allocations on Renderable class.
-[-] 11. Get rid of Map class.
-[-] 12. Redesign service thread.
+[+] 9. Remove allocations on MapTile class.
+[+] 10. Remove allocations on Renderable class.
+[+] 11. Get rid of Map class.
+[+] 12. Redesign service thread.
+[-] 13. Add allocator usage to service task lists.
+[-] 14. Add allocator usage to image allocation in factory.
 
 General line of tasks:
 [+] 1. Finish satellite imagery part implementation.

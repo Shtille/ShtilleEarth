@@ -193,6 +193,8 @@ void PlanetCube::Unrequest(PlanetTreeNode* node)
 			++i;
 		}
 	}
+	// Remove node tasks from service queue
+	service_.RemoveTasks(node->GetKey());
 }
 void PlanetCube::HandleRequests(RequestQueue& requests)
 {

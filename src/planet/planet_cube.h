@@ -121,7 +121,7 @@ private:
 	const float radius_; //!< planet radius
 	PlanetTileMesh * tile_;
 
-	KeyNodeMap key_node_map_;
+	KeyNodeMap key_node_map_; //!< needed to process only tasks with valid nodes
 	PlanetService service_;
 
 	RequestQueue inline_requests_;

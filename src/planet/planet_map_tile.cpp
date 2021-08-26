@@ -50,14 +50,9 @@ bool PlanetMapTile::HasAlbedoTexture() const
 }
 void PlanetMapTile::SetAlbedoImage(const scythe::Image& image)
 {
+	scythe::Renderer * renderer = node_->GetRenderer();
 	if (albedo_texture_)
-	{
-		// TODO:
-		//albedo_texture_->SetData(0, 0, image.width(), image.height(), image.pixels());
-	}
+		renderer->SetTextureData(albedo_texture_, 0, 0, image.width(), image.height(), image.pixels());
 	else
-	{
-		scythe::Renderer * renderer = node_->GetRenderer();
 		renderer->AddTextureFromImage(albedo_texture_, image, scythe::Texture::Wrap::kClampToEdge);
-	}
 }
